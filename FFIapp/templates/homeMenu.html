@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%block menu%}
+
+<table width=100% border=1 height=70%>
+    <tr>
+        <td height=75 width=20%><button class="subMenuButton">News</button>
+        <td rowspan=5>
+
+        {%block content%}
+        {% endblock %}
+    </tr>
+    <tr>
+        <td height=75><button class="subMenuButton">Photos</button>
+    </tr>
+    <tr>
+        <td height=75><button class="subMenuButton">About Us</button>
+    </tr>
+    <tr>
+        <td height=75><button class="subMenuButton">Contact Us</button>
+    </tr>
+    <tr>
+    </tr>
+</table>
+
+{% endblock %}

@@ -1,0 +1,133 @@
+<html>
+
+    <head>
+        <title>Future Flooring Installation Inc.</title>
+
+        <style>
+            body{
+                background-color:whitesmoke;
+            }
+            h1{
+                font-family: courier new;
+                font-size: 48pt;
+                font-style: bold;
+                margin-bottom: 0;
+            }
+            h2{
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-size: 14pt;
+                font-style: italic;
+                line-height: 0.5;
+                margin-top: 0;
+            }
+
+            table.menuTable{
+                width: 100%;
+                background-color: antiquewhite;
+                border-width: 1;
+                
+
+            }
+            button.menuButton{
+                height: 80;
+                width: 100%;
+                background-color: slategrey;
+                border: none;
+                color: black;
+                padding: 15px 32px;
+                text-align: center;
+                font-style: ;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px; 
+
+            }
+            .menubutton:hover{
+                background-color: dimgrey;
+                transition: 1;
+            }
+            .menuButton:focus{
+                outline-color: transparent;
+                outline-style: solid;
+                box-shadow: 0 0 0 2px darkslategrey;
+                background-color: darkslategrey;
+                color: white;
+                transition: 1;
+            }
+            .menuButton:active{
+                background-color: lightslategrey;
+                transition: 1;
+            }
+            button.subMenuButton{
+                height: 80;
+                width: 100%;
+                background-color: darkgrey; 
+                border: none;
+                color: black;
+                padding: 15px 32px;
+                text-align: center;
+                font-style: ;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px; 
+
+            }
+            .subMenubutton:hover{
+                background-color: dimgrey;
+                transition: 0.5;
+            }
+            .subMenuButton:focus{
+                outline-color: transparent;
+                outline-style: solid;
+                box-shadow: 0 0 0 2px darkslategrey;
+                background-color: darkslategrey;
+                color: white;
+                transition 0.5;
+            }
+            .subMenuButton:active{
+                background-color: lightslategrey;
+                transition: 0.5;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+<table class="menuTable" border=0>
+    <tr>
+        <Td align=center colspan=4><h1>F.F.I.<br>
+                        <h2>Future Flooring Installation Inc.
+    </tr>
+    <tr align=center height=75>
+        <td width=25%>
+            <form action="home" type="get">
+                <button class="menuButton">Home</button>
+            </form>
+        <td width=25%>
+            <form action="products" type="get">
+                <button class="menuButton">Products</button>
+            </form>
+        <td width=25%>
+            <form action="vendors" type="get">
+                <button class="menuButton">Vendors</button>
+            </form>
+        <td width=25%>
+            <button class="menuButton">
+            {{ user.userID|default:'Register!'}}
+            </button>
+    </tr>
+
+</table>
+
+
+<!-- Div for holding block content //-->
+        <div class="container">
+            {% block menu %}
+            {% endblock %}
+        </div>
+
+    </body>
+
+</html>
+
