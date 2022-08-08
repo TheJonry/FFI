@@ -1,22 +1,24 @@
 {%extends 'base.html'%}
 {%block menu%}
 
-<table width=100% border=1 height=70%>
+<table width=100% height=70%>
     <tr>
-        <td height=75 width=20%><button class="subMenuButton">News</button>
-        <td rowspan=5>
-
+        <td height=75 width=20%><a class="subMenu" href="news">News</a>
+        <td rowspan=5 valign="top">
+            <div class="viewer">
         {%block content%}
         {% endblock %}
+        </div>
+        </td>
     </tr>
     <tr>
-        <td height=75><button class="subMenuButton">Photos</button>
+        <td height=75><a class="subMenu" href="photos">Photos</a>
     </tr>
     <tr>
-        <td height=75><button class="subMenuButton">About Us</button>
+        <td height=75><a class="subMenu" href="about">About Us</a>
     </tr>
     <tr>
-        <td height=75><button class="subMenuButton">Contact Us</button>
+        <td height=75><a class="subMenu" href="contact">Contact Us</a>
     </tr>
     <tr>
     </tr>

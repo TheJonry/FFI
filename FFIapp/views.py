@@ -11,3 +11,6 @@ def products(request):
 
 def vendors(request):
     return render(request, 'vendorMenu.html', {})
+
+def news(request):
+    return render(request, 'news.html', {})

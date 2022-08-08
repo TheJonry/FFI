@@ -2,7 +2,75 @@
 {% load static %}
 {% block branding %}
 {% block extrastyle %}
-  <link rel='stylesheet' href="{% static 'css/admin.css' %}">
+<style>
+    #header{
+    height: 50px;
+    background: black;
+    color: white;
+  }
+  #header a:link, #header a:visited {
+    background-color: #16161d;
+    color: #ffffff;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: solid;
+    border-color: #16161d;
+    border-radius: 5px;
+    font-weight: bolder;
+
+  }
+  .module caption, .module h2, .inline-group h2{
+    background-color: red;
+    color: white;
+    height: 40px;
+  }
+  #header a:hover{
+    background-color: #004a71;
+    transition: 500ms;
+  }
+
+  #branding h1{
+    color: #004a71;
+    font-weight: bolder;
+  }
+
+  #main {
+    background-color: whitesmoke;
+  }
+
+  #content {
+    background-color: white;
+    border: inset;
+    border-width: 0px;
+    border-color: grey;
+    border-radius: 0px;
+  }
+  a.section:link{
+    background-color: black;
+    color: #ffffff;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    border-color: #11161d;
+    border-radius: 0px;
+    font-weight: bold;
+    display: inline-block;
+  }
+  a:link{
+    background-color: black;
+    color: #ffffff;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: solid;
+    border-color: #11161d;
+    border-radius: 5px;
+    font-weight: bolder;
+    display: inline-block;
+  }
+</style>
 {% endblock %}
 <h1>
 
