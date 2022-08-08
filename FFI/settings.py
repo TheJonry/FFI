@@ -55,7 +55,7 @@ ROOT_URLCONF = 'FFI.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'FFIapp/templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
