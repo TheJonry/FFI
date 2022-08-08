@@ -2,4 +2,4 @@
 deployment:
  tasks:
  - export DEPLOYPATH=/home/ffiahos1/FFI/
- - /bin/cp FFI $DEPLOYPATH
+ - /bin/cp -R FFI $DEPLOYPATH
