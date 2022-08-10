@@ -1,0 +1,40 @@
+{% extends 'homeMenu.html' %}
+{% block content %}
+
+{% if next %}
+{% if user.is_authenticated %}
+
+
+{% else %}
+
+{% endif %}
+
+{% endif %}
+<br><br><center>
+    <div id="loginBox">
+<table align="center" id="loginTable">
+<form method='post' action="{% url 'login' %}">
+{% csrf_token %}
+<tr>
+    <td>{{form.username.label_tag}}</td>
+    <td>{{form.username}}</td>
+</tr>
+<tr>
+    <td>{{form.password.label_tag}}</td>
+    <td>{{form.password}}</td>
+</tr>
+<tr>
+    <td colspan=2><input type="submit" value='login' id="loginButton">
+        <input type="hidden" name='next' value="{{next}}">
+    </td>
+</tr>
+
+
+
+
+</form>
+</table>
+</div>
+</center>
+
+{% endblock %}

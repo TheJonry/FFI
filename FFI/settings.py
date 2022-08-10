@@ -101,6 +101,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+LOGIN_REDIRECT_URL = '/home'
+LOGOUT_REDIRECT_URL = '/home'
+
+AUTH_USER_MODEL = "FFIapp.UserProfile"
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
