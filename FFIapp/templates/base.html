@@ -3,7 +3,7 @@
     <head>
         <title>Future Flooring Installation Inc.</title>
 
-{% if request.user_agent.is_mobile %}
+{% if device_info.type == "phone" %}
 <style id="mobileStyle">
     * {
         margin: 0;
