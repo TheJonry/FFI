@@ -3,157 +3,318 @@
     <head>
         <title>Future Flooring Installation Inc.</title>
 
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-            }
-            #wrap{
-                min-height: 100%;
-            }
-            #main{
-                overflow: auto;
-                padding-bottom: 180px;
-            }
-            div.viewer{
-                width: 100%;
-                height: 100%;
-                border: solid;
-                border-radius: 10px;
-                border-width: 1px 0 0 1px;
-                border-style: outset;
-                border-color: white;
-                background-color: black;
-                display: inline-block;
-            }
-            p{
-                color: silver;
-                background-color: #11161d;
-                padding: 20;
-                vertical-align: text-top;
-            }
-            html, body{
-                height: 99%;
-                width: 99%;
-                background-color:black;
-            }
-            h1{
-                font-family: courier new;
-                font-size: 48pt;
-                font-style: bold;
-                margin-bottom: 0;
-                color: white;
-            }
-            h2{
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                font-size: 14pt;
-                font-style: italic;
-                line-height: 0.5;
-                margin-top: 0;
-            }
+{% if request.user_agent.is_mobile %}
+<style id="mobileStyle">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    #wrap{
+        min-height: 100%;
+    }
+    #main{
+        overflow: auto;
+        padding-bottom: 180px;
+    }
+    div.viewer{
+        width: 100%;
+        height: 100%;
+        border: solid;
+        border-radius: 2px;
+        border-width: 1px 0 0 1px;
+        border-style: outset;
+        border-color: white;
+        background-color: black;
+        display: inline-block;
+    }
+    p{
+        color: silver;
+        background-color: #11161d;
+        padding: 20;
+        vertical-align: text-top;
+    }
+    html, body{
+        height: 99%;
+        width: 99%;
+        background-color:black;
+    }
+    h1{
+        font-family: courier new;
+        font-size: 48pt;
+        font-style: bold;
+        margin-bottom: 0;
+        color: white;
+        display: inline-block;
+        padding: 0 20px 20px 20px;
+    }
+    h2{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 14pt;
+        font-style: italic;
+        line-height: 0.5;
+        margin-top: 0;
+        margin-bottom: 5;
+        display: inline-block;
+    }
 
-            table.menuTable{
-                width: 100%;
-                background-color: black;
-                color: #004a71;
+    table.menuTable{
+        width: 100%;
+        background-color: black;
+        color: #004a71;
+        padding: 10px;
+    }
+    #loginTable{
+        padding: 10px;
+        border-spacing: 10px;
+    }
 
-            }
-            #loginTable{
-                padding: 10px;
-                border-spacing: 10px;
-            }
+    #loginBox{
+        width: 400px;
+        border: solid;
+        border-radius: 5px;
+        border-color: white;
+    }
+    a.menu{
+        background-color: #11161d;
+        color: #ffffff;
+        text-decoration: none;
+        text-transform: uppercase;
+        border: solid;
+        border-color: #11161d;
+        border-radius: 5px;
+        border-width: 5px;
+        font-weight: bolder;
+        font-size: 24pt;
+        width: 80%;
+        height: 100px;
+        text-align: center;
+        display: inline-block;
+        line-height: 100px;
+        vertical-align: middle;
+    }
+    a.subMenu{
+        background-color: black;
+        color: #ffffff;
+        text-decoration: none;
+        text-transform: uppercase;
+        border: solid;
+        border-color: #11161d;
+        border-radius: 5px;
+        border-width: 5px;
+        font-weight: bolder;
+        font-size: 20pt;
+        height: 100px;
+        display: inline-block;
+        max-width: 80%;
+        min-width: 70%;
+        line-height: 100px;
+        vertical-align: center;   
+        padding: 0 0 0 0.7em;
+    }
+    #loginButton{
+        background-color: black;
+        color: #ffffff;
+        padding: 1em 1.5em;
+        text-decoration: none;
+        text-transform: uppercase;
+        border: solid;
+        border-color: #11161d;
+        border-radius: 5px;
+        font-weight: bolder;
+        display: inline-block;
+        width: 100%;
+    }
+    a.menu:hover, a.subMenu:focus{
+        background-color: #1f3b4d;
+        transition: 500ms;
+    }
+    a.subMenu:hover, a.subMenu:focus{
+        background-color: #1f3b4d;
+        transition: 500ms;
+    }
+    #footer {
+        display: inline-block;
+        text-align: right;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        background-color: #010101;
 
-            #loginBox{
-                width: 400px;
-                border: solid;
-                border-radius: 5px;
-                border-color: white;
-            }
-            a.menu{
-                background-color: #11161d;
-                color: #ffffff;
-                padding: 1em 1.5em;
-                text-decoration: none;
-                text-transform: uppercase;
-                border: solid;
-                border-color: #11161d;
-                border-radius: 5px;
-                font-weight: bolder;
-                display: inline-block;
-                min-width: 80%;
-            }
-            a.subMenu{
-                background-color: black;
-                color: #ffffff;
-                padding: 1em 1.5em;
-                text-decoration: none;
-                text-transform: uppercase;
-                border: solid;
-                border-color: #11161d;
-                border-radius: 5px;
-                font-weight: bolder;
-                display: inline-block;
-                max-width: 80%;
-                min-width: 70%;   
-            }
-            #loginButton{
-                background-color: black;
-                color: #ffffff;
-                padding: 1em 1.5em;
-                text-decoration: none;
-                text-transform: uppercase;
-                border: solid;
-                border-color: #11161d;
-                border-radius: 5px;
-                font-weight: bolder;
-                display: inline-block;
-                width: 100%;
-            }
-            a.menu:hover, a.subMenu:focus{
-                background-color: #1f3b4d;
-                transition: 500ms;
-            }
-            a.subMenu:hover, a.subMenu:focus{
-                background-color: #1f3b4d;
-                transition: 500ms;
-            }
-            #footer {
-                display: inline-block;
-                text-align: right;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                height: 100px;
-                background-color: #010101;
+    }
+    .foot{
+        color: whitesmoke;
+        font-style: italic;
+        font-weight: none;
+        font-size: 14pt;
+        text-align: right;
+        height: 100%;
+        width: 100%;
+        padding: 0px 30px 0px 0px;
+    }
+    #id_username, #id_password{
+        padding: 5px;
+        background-color: black;
+        color: white;
+    }
+    label{
+        color:grey;
+    }
+</style>
 
-            }
-            .foot{
-                color: whitesmoke;
-                font-style: italic;
-                font-weight: none;
-                font-size: 14pt;
-                text-align: right;
-                height: 100%;
-                width: 100%;
-                padding: 0px 30px 0px 0px;
-            }
-            #id_username, #id_password{
-                padding: 5px;
-                background-color: black;
-                color: white;
-            }
-            label{
-                color:grey;
-            }
-        </style>
+{% else %}
+<style id="pcStyle">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    #wrap{
+        min-height: 100%;
+    }
+    #main{
+        overflow: auto;
+        padding-bottom: 180px;
+    }
+    div.viewer{
+        overflow:visible;
+        width: 100%;
+        height: 100%;
+        border: solid;
+        border-radius: 2px;
+        border-width: 1px 0 0 1px;
+        border-style: outset;
+        border-color: white;
+        background-color: black;
+        display: inline-block;
+    }
+    p{
+        color: silver;
+        background-color: #11161d;
+        padding: 20;
+        vertical-align: text-top;
+    }
+    html, body{
+        height: 99%;
+        width: 99%;
+        background-color:black;
+    }
+    h1{
+        font-family: courier new;
+        font-size: 48pt;
+        font-style: bold;
+        margin-bottom: 0;
+        color: white;
+    }
+    h2{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 14pt;
+        font-style: italic;
+        line-height: 0.5;
+        margin-top: 0;
+    }
 
+    table.menuTable{
+        width: 100%;
+        background-color: black;
+        color: #004a71;
+
+    }
+    #loginTable{
+        padding: 10px;
+        border-spacing: 10px;
+    }
+
+    #loginBox{
+        width: 400px;
+        border: solid;
+        border-radius: 5px;
+        border-color: white;
+    }
+    a.menu{
+        background-color: #11161d;
+        color: #ffffff;
+        padding: 1em 1.5em;
+        text-decoration: none;
+        text-transform: uppercase;
+        border: solid;
+        border-color: #11161d;
+        border-radius: 5px;
+        font-weight: bolder;
+        display: inline-block;
+        min-width: 80%;
+    }
+    a.subMenu{
+        background-color: black;
+        color: #ffffff;
+        padding: 1em 1.5em;
+        text-decoration: none;
+        text-transform: uppercase;
+        border: solid;
+        border-color: #11161d;
+        border-radius: 5px;
+        font-weight: bolder;
+        display: inline-block;
+        max-width: 80%;
+        min-width: 70%; 
+    }
+    #loginButton{
+        background-color: black;
+        color: #ffffff;
+        padding: 1em 1.5em;
+        text-decoration: none;
+        text-transform: uppercase;
+        border: solid;
+        border-color: #11161d;
+        border-radius: 5px;
+        font-weight: bolder;
+        display: inline-block;
+        width: 100%;
+    }
+    a.menu:hover, a.subMenu:focus{
+        background-color: #1f3b4d;
+        transition: 500ms;
+    }
+    a.subMenu:hover, a.subMenu:focus{
+        background-color: #1f3b4d;
+        transition: 500ms;
+    }
+    #footer {
+        display: inline-block;
+        text-align: right;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        background-color: #010101;
+
+    }
+    .foot{
+        color: whitesmoke;
+        font-style: italic;
+        font-weight: none;
+        font-size: 14pt;
+        text-align: right;
+        height: 100%;
+        width: 100%;
+        padding: 0px 30px 0px 0px;
+    }
+    #id_username, #id_password{
+        padding: 5px;
+        background-color: black;
+        color: white;
+    }
+    label{
+        color:grey;
+    }
+</style>
+{% endif %}
     </head>
 
     <body>
 <div class="wrap"><div class="main">
 <table class="menuTable" border=0>
     <tr>
-        <Td align=center colspan=4><h1>F.F.I.  
+        <Td colspan=4><h1>F.F.I.  
                         <h2>Future Flooring Installation Inc.
     </tr>
     <tr align=center height=75>
