@@ -11,6 +11,3 @@ class newsPost(models.Model):
     created_at = models.DateTimeField(auto_now_add="True")
     title = models.CharField(max_length=100)
     message = models.TextField(max_length=5000)
-
-    class Meta:
-        ordering = ('-created_at', 'author')
