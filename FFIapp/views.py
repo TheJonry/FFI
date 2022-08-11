@@ -32,4 +32,7 @@ def photos(request):
 class newsPostView(ListView):
     model = newsPost
     template_name = "news.html"
-    ordering = ['-created_at']
+    def get_queryset(self, *args, **kwargs):
+        qs = super(newsPostView, self).get_queryset(*args, **kwargs)
+        qs = qs.order_by("-created_at")
+        return qs
