@@ -17,8 +17,8 @@ def products(request):
 def vendors(request):
     return render(request, 'vendorMenu.html', {})
 
-def news(request):
-    return render(request, 'news.html', {})
+#def news(request):
+#    return render(request, 'news.html', {})
 
 def contact(request):
     return render(request, 'contact.html', {})
@@ -31,3 +31,4 @@ def photos(request):
 
 class newsPostView(ListView):
     model = newsPost
+    template_name = "news.html"
