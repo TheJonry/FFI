@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
+from FFIapp.models import newsPost
 
 # Create your views here.
 def home(request):
@@ -26,3 +28,6 @@ def about(request):
 
 def photos(request):
     return render(request, 'photos.html', {})
+
+class newsPostView(ListView):
+    model = newsPost

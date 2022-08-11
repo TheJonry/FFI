@@ -1,6 +1,12 @@
 {%extends 'homeMenu.html'%}
 {%block content%}
 <Br><Br>
-<p>News goes here
+    {% for newsPost in object_list %}
+    <p>{{ newsPost.title }}<br>
+        {{ newsPost.message }}<br>
+        {{ newsPost.author }}<br>
+        {{ newsPost.created_at}}
+    </p>
+{% endfor %}
 
 {% endblock %}

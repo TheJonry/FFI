@@ -4,3 +4,9 @@ from django.contrib.auth.models import AbstractUser
 class UserProfile(AbstractUser):
     age = models.PositiveIntegerField(name="age", null="yes", blank="yes")
     role = models.CharField(name="role", null="yes", blank="yes", max_length=20)
+
+class newsPost():
+    author = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, related_name="posts", )
+    created_at = models.DateTimeField(auto_now_add="True")
+    title = models.CharField(max_length=100)
+    message = models.CharField(max_length=1000)
