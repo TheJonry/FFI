@@ -1,12 +1,17 @@
 {%extends 'homeMenu.html'%}
 {%block content%}
 <Br><Br>
+    {% if user.is_staff %}
+      <p>  User is staff </p>
+      <hr>
+    {% endif %}
+
     {% for newsPost in object_list %}
-    <p>{{ newsPost.title }}<br>
-        {{ newsPost.message }}<br>
-        {{ newsPost.author }}<br>
-        {{ newsPost.created_at}}
-    </p>
+    
+    <h3>{{ newsPost.title }}</h3><br><hr>
+        <p>{{ newsPost.message }}</p><br>
+        <h4>Posted by {{ newsPost.author.first_name|add:' '|add:newsPost.author.last_name|add:', '|add:newsPost.author.role }}<br>{{ newsPost.created_at}}</h4>
+    
 {% endfor %}
-New news
+
 {% endblock %}
