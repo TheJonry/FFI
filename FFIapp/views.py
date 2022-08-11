@@ -32,6 +32,7 @@ def photos(request):
 class newsPostView(ListView):
     model = newsPost
     template_name = "news.html"
+    ordering = ['-created_at']
     def get_ordering(self):
         ordering = self.request.GET.get('ordering', '-created_at')
         return ordering
