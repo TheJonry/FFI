@@ -3,6 +3,10 @@
 {%extends 'homeMenu.html'%}
 {%block content%}
 
+<p>{% if request.user_agent.is_mobile %} Is mobile
+    {% endif %}
 
+    {% if request.user_agent.is_pc %} Is PC
+    {% endif %}
 
 {% endblock %}
