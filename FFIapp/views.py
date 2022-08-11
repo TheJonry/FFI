@@ -32,5 +32,4 @@ def photos(request):
 class newsPostView(ListView):
     model = newsPost
     template_name = "news.html"
-    
     ordering = ['-created_at']
