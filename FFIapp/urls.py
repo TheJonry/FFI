@@ -10,7 +10,7 @@ urlpatterns = [
     path('products', views.products, name="products"),
     path('vendors', views.vendors, name="vendors"),
     #path('news', views.news, name="news"),
-    path('news', newsPostView.as_view()),
+    path('news/', newsPostView.as_view()),
     path('about', views.about, name="about"),
     path('contact', views.contact, name="contact"),
     path('photos', views.photos, name="photos"),
