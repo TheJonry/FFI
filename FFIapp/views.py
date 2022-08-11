@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
+from django.views.generic.list import ListView
 from FFIapp.models import newsPost
 
 # Create your views here.
@@ -32,7 +32,6 @@ def photos(request):
 class newsPostView(ListView):
     model = newsPost
     template_name = "news.html"
-    def get_queryset(self, *args, **kwargs):
-        qs = super(newsPostView, self).get_queryset(*args, **kwargs)
-        qs = qs.order_by("-created_at")
-        return qs
+    def get_ordering(self):
+        ordering = self.request.GET.get('ordering', '-created_at')
+        return ordering
