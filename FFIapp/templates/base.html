@@ -3,7 +3,7 @@
     <head>
         <title>Future Flooring Installation Inc.</title>
 
-{% if request.user_agent_is_pc %}
+{% if request.user_agent.is_mobile %}
 <style id="mobileStyle">
     * {
         margin: 0;
@@ -161,8 +161,8 @@
         color:grey;
     }
 </style>
-
-{% else %}
+{% endif %}
+{% if request.user_agent.is_pc %}
 <style id="pcStyle">
     * {
         margin: 0;
