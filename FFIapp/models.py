@@ -13,4 +13,4 @@ class newsPost(models.Model):
     message = models.TextField(max_length=5000)
 
     class Meta:
-        ordering = ('-created_at',)
+        ordering = ('-created_at', 'author')
