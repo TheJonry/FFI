@@ -3,6 +3,12 @@
 
     {% if user.is_staff %}
       <p>  User is staff </p>
+      <form method="post" action="/news">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type ="submit" value="Post">
+      </form>
+
       <hr>
     {% endif %}
 
