@@ -8,7 +8,7 @@ class newsPostForm(ModelForm):
         fields = ('title', 'message', 'author',)
 
         widgets = {
-            'title': forms.TextInput(attrs={'class':'form-control'}),
-            'message': forms.Textarea(attrs={'class':'form-control'}),
+            'title': forms.TextInput(attrs={'class':'form-control', 'id': 'titleBar'}),
+            'message': forms.Textarea(attrs={'class':'form-control', 'id':'messageBar'}),
             'author': forms.TextInput(attrs={'class':'form-control', 'value':'', 'id':'authortag', 'type':'hidden'}),
         }

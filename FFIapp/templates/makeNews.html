@@ -1,14 +1,15 @@
 {%extends 'homeMenu.html'%}
 {%block content%}
-
+<div>
     {% if user.is_staff %}
-      <p>  User is staff {{user}} </p>
+        <h3>Create a News Post </h3><br><br>
       <form method="post">
         {% csrf_token %}
-
-       {{ form.as_p}}
-
-        <button class="postButton">Post</button>
+        <table width="100%">
+       {{ form.as_table }}
+        </table>
+        <br><br>
+        <button id="postButton">Post</button>
       </form>
 
       <script>
@@ -19,6 +20,7 @@
       <hr>
     {% endif %}
 
-   
+
 <br><br><br><br>
+</div>
 {% endblock %}
