@@ -1,4 +1,3 @@
-from tkinter import HIDDEN
 from django import forms
 from django.forms import ModelForm
 from FFIapp.models import models, newsPost
