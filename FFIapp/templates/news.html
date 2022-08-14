@@ -1,20 +1,35 @@
 {%extends 'homeMenu.html'%}
 {%block content%}
+<div>
+  {% if user.is_staff %}
+      <h3>Create a New Post </h3><hr>
+    <form method="post">
+      {% csrf_token %}
+      <table width="100%">
+     {{ form.title }}<br>
+     {{form.message}}<br>
+     {{form.author}}
+      </table>
+      <br><br>
+      <button id="postButton">Post</button>
+    </form>
 
-    {% if user.is_staff %}
-      <br>
-      <a href="/makeNews" class="submenu">Create a Post</a>
-      <br>
-
-      <hr>
-    {% endif %}
-
-    {% for newsPost in object_list %}
+    <script>
+      var name = "{{ user.first_name}} {{ user.last_name }}, {{ user.role }}";
+      document.getElementById("authortag").value = name;
+    </script>
+<br><br>
     <hr>
-    <h3>{{ newsPost.title }}</h3><br>
-        <p>{{ newsPost.message }}</p><br>
-        <h4>Posted by {{ newsPost.author }}<br>{{ newsPost.created_at}}</h4><br><br>
-    
-{% endfor %}
+  {% endif %}
+
+  {% for post in posts %}
+  <hr>
+  <h3>{{ post.title }}</h3><br>
+      <p>{{ post.message }}</p><br>
+      <h4>Posted by {{ post.author }}<br>{{ post.created_at}}</h4><br><br>
+  
+    {% endfor %}
+<br><br><br><br>
+</div>
 <br><br><br><br>
 {% endblock %}

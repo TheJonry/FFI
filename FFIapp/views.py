@@ -18,15 +18,22 @@ def products(request):
 def vendors(request):
     return render(request, 'vendorMenu.html', {})
 
-def list_and_create(request):
+def news(request):
+    posts = newsPost.objects.all().order_by('-created_at')
     form = newsPostForm(request.POST)
 
-    if request.method == 'POST' and form.is_valid():
-        form.user = request.session['user']
-        form.save()
-        return redirect('news/')
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('news')
+        else:
+            form = newsPostForm()
+    context={
+        'posts' : posts,
+        'form' : form,
+    }  
     
-    return render(request, 'makeNews.html', )
+    return render(request, 'news.html', context)
 
 def contact(request):
     return render(request, 'contact.html', {})
@@ -37,40 +44,44 @@ def about(request):
 def photos(request):
     return render(request, 'photos.html', {})
 
-class newsPostCreateView(CreateView):
-    model = newsPost
-    template_name = "makeNews.html"
-    fields = '__all__'
+# class newsPostCreateView(CreateView):
+#     model = newsPost
+#     template_name = "makeNews.html"
+#     fields = '__all__'
 
-    def get_context_data(self, **kwargs):
-        context = super(newsPostCreateView, self).get_context_data(**kwargs)
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super(newsPostCreateView, self).get_context_data(**kwargs)
+#         return context
 
-class newsPostView(ListView):
-    model = newsPost
-    template_name = "news.html"
-    ordering = ['-created_at']
-    form_class = newsPostForm()
+# class newsPostView(ListView):
+#     model = newsPost
+#     template_name = "news.html"
+#     ordering = ['-created_at']
+#     form_class = newsPostForm()
 
-    def get_ordering(self):
-        ordering = self.request.GET.get('ordering', '-created_at')
-        return ordering
+#     def get_ordering(self):
+#         ordering = self.request.GET.get('ordering', '-created_at')
+#         return ordering
     
 
 
 
-class newsPostAddView(FormView):
-    template_name = "makeNews.html"
-    form_class = newsPostForm
-    model = newsPost
+# class newsPostAddView(FormView):
+#     template_name = "makeNews.html"
+#     form_class = newsPostForm
+#     model = newsPost
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+#     def form_valid(self, form):
+#         form.instance.author = self.request.user
+#         return super().form_valid(form)
 
-    def post(self, request, *args, **kwargs):
-        form = self.get_form()
-        if form.is_valid():
-            form.save()
-            return redirect('news')
+#     def post(self, request, *args, **kwargs):
+#         form = self.get_form()
+#         if form.is_valid():
+#             form.save()
+#             return redirect('news')
 
+# class postListView(ListView, CreateView):
+#     model = newsPost
+#     template_name = "makeNews.html"
+#     context_object_name: 'makeNews'
