@@ -31,7 +31,7 @@ def news(request):
     context={
         'posts' : posts,
         'form' : form,
-    }  
+    }
     
     return render(request, 'news.html', context)
 
@@ -43,45 +43,3 @@ def about(request):
 
 def photos(request):
     return render(request, 'photos.html', {})
-
-# class newsPostCreateView(CreateView):
-#     model = newsPost
-#     template_name = "makeNews.html"
-#     fields = '__all__'
-
-#     def get_context_data(self, **kwargs):
-#         context = super(newsPostCreateView, self).get_context_data(**kwargs)
-#         return context
-
-# class newsPostView(ListView):
-#     model = newsPost
-#     template_name = "news.html"
-#     ordering = ['-created_at']
-#     form_class = newsPostForm()
-
-#     def get_ordering(self):
-#         ordering = self.request.GET.get('ordering', '-created_at')
-#         return ordering
-    
-
-
-
-# class newsPostAddView(FormView):
-#     template_name = "makeNews.html"
-#     form_class = newsPostForm
-#     model = newsPost
-
-#     def form_valid(self, form):
-#         form.instance.author = self.request.user
-#         return super().form_valid(form)
-
-#     def post(self, request, *args, **kwargs):
-#         form = self.get_form()
-#         if form.is_valid():
-#             form.save()
-#             return redirect('news')
-
-# class postListView(ListView, CreateView):
-#     model = newsPost
-#     template_name = "makeNews.html"
-#     context_object_name: 'makeNews'
