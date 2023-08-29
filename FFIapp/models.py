@@ -17,3 +17,21 @@ class newsPost(models.Model):
 
     def __str__(self):
         return self.title + " | " + self.author
+
+class boats(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    
+class customers(models.Model):
+    id = models.BigAutoField(primary_key=True)
+
+class employees(models.Model):
+    id = models.BigAutoField(primary_key=True)
+
+class services(models.Model):
+    id = models.BigAutoField(primary_key=True)
+
+class appointments(models.Model):
+    id = models.BigAutoField(primary_key=True)
+
+class marinas(models.Model):
+    id = models.BigAutoField(primary_key=True)
