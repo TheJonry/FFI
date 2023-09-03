@@ -75,6 +75,7 @@ class Employee(models.Model):
     Last_Name = models.CharField(max_length=30)
     Can_Do = models.ManyToManyField(Service)
     Note = models.TextField(max_length=500, default="No notes.")
+
     def __str__(self):
         return self.Last_Name + ", " + self.First_Name
 
@@ -84,11 +85,11 @@ class Appointment(models.Model):
     Date_Of_Appointment = models.DateField(auto_now=False, auto_now_add=False)
     Boat = models.ForeignKey(Boat, on_delete=models.CASCADE)
     Marina = models.ForeignKey(Marina, on_delete=models.CASCADE)
-    Slip = models.CharField(max_length=15)
-    Employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    Slip = models.CharField(max_length=15, null=True)
+    Employee = models.ForeignKey(Employee, on_delete=models.CASCADE, null=True)
     Clean_Service = models.BooleanField(default=True)
     Zinc_Service = models.BooleanField(default=False)
-    Zinc_Service_Units = models.PositiveSmallIntegerField()
+    Zinc_Service_Units = models.PositiveSmallIntegerField(null=True)
     Status = models.TextChoices("Status", "APPLIED CONFIRMED CANCELLED RESCHEDULED COMPLETE")
     Note = models.TextField(max_length=500, default="No notes.")
 
