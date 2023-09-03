@@ -27,6 +27,7 @@ class Services(models.Model):
 
 class Marinas(models.Model):
     id = models.BigAutoField(primary_key=True)
+    Name = models.CharField(max_length=50)
     Street = models.CharField(max_length=50)
     City = models.CharField(max_length=25)
     Zip = models.PositiveSmallIntegerField(max_length=5)
