@@ -25,6 +25,9 @@ class Services(models.Model):
     Unit_Price = models.PositiveSmallIntegerField(max_length=8)
     Unit_Price_Description = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.Title
+
 class Marinas(models.Model):
     id = models.BigAutoField(primary_key=True)
     Name = models.CharField(max_length=50)
