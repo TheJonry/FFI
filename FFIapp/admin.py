@@ -5,7 +5,6 @@ from FFIapp.models import UserProfile, newsPost, Services, Customers, Marinas, B
 
 admin.site.register(UserProfile)
 admin.site.register(newsPost)
-
 admin.site.register(Services)
 admin.site.register(Customers)
 admin.site.register(Marinas)
