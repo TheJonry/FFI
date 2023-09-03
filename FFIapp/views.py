@@ -1,5 +1,5 @@
 import re
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -43,3 +43,6 @@ def about(request):
 
 def photos(request):
     return render(request, 'photos.html', {})
+
+
+
