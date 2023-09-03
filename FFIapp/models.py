@@ -36,24 +36,24 @@ class Region(models.Model):
 class Marina(models.Model):
     id = models.BigAutoField(primary_key=True)
     Name = models.CharField(max_length=50)
-    Street = models.CharField(max_length=50, null=True)
-    City = models.CharField(max_length=25, null=True)
-    Zip = models.PositiveSmallIntegerField(null=True)
-    Region = models.ForeignKey(Region, on_delete=models.CASCADE, null=True)
-    Note = models.TextField(max_length=500, default="No notes.", null=True)
+    Street = models.CharField(max_length=50, blank=True, null=True)
+    City = models.CharField(max_length=25, blank=True, null=True)
+    Zip = models.PositiveSmallIntegerField(blank=True, null=True)
+    Region = models.ForeignKey(Region, on_delete=models.CASCADE, blank=True, null=True)
+    Note = models.TextField(max_length=500, default="No notes.", blank=True, null=True)
 
     def __str__(self):
         return self.Name
 
 class Customer(models.Model):
     id = models.BigAutoField(primary_key=True)
-    First_Name = models.CharField(max_length=30, null=True)
-    Last_Name = models.CharField(max_length=30, null=True)
-    Street = models.CharField(max_length=50, default="", null=True)
-    City = models.CharField(max_length=25, default="", null=True)
-    Zip = models.PositiveSmallIntegerField( null=True)
-    Note = models.TextField(max_length=500, default="No notes.", null=True)
-    Contact_Info = models.CharField(max_length=50, default="", null=True)
+    First_Name = models.CharField(max_length=30, blank=True, null=True)
+    Last_Name = models.CharField(max_length=30, blank=True, null=True)
+    Street = models.CharField(max_length=50, default="", blank=True, null=True)
+    City = models.CharField(max_length=25, default="", blank=True, null=True)
+    Zip = models.PositiveSmallIntegerField( blank=True, null=True)
+    Note = models.TextField(max_length=500, default="No notes.", blank=True, null=True)
+    Contact_Info = models.CharField(max_length=50, default="", blank=True, null=True)
 
     def __str__(self):
         return self.Last_Name + ", " + self.First_Name
@@ -61,10 +61,10 @@ class Customer(models.Model):
 class Boat(models.Model):
     id = models.BigAutoField(primary_key=True)
     Name = models.CharField(max_length=50, default="Boat")
-    Owner = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
+    Owner = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=True, null=True)
     Size = models.PositiveSmallIntegerField()
     Preferred_Interval = models.PositiveSmallIntegerField()
-    Note = models.TextField(max_length=500, default="No notes.", null=True)
+    Note = models.TextField(max_length=500, default="No notes.", blank=True, null=True)
 
     def __str__(self):
         return self.Name
@@ -73,8 +73,8 @@ class Employee(models.Model):
     id = models.BigAutoField(primary_key=True)
     First_Name = models.CharField(max_length=30)
     Last_Name = models.CharField(max_length=30)
-    Can_Do = models.ManyToManyField(Service, null=True)
-    Note = models.TextField(max_length=500, default="No notes.", null=True)
+    Can_Do = models.ManyToManyField(Service, blank=True, null=True)
+    Note = models.TextField(max_length=500, default="No notes.", blank=True, null=True)
 
     def __str__(self):
         return self.Last_Name + ", " + self.First_Name
@@ -82,15 +82,15 @@ class Employee(models.Model):
 class Appointment(models.Model):
     id = models.BigAutoField(primary_key=True)
     Date_Submitted = models.DateField(auto_now_add=True)
-    Date_Of_Appointment = models.DateField(auto_now=False, auto_now_add=False, null=True)
+    Date_Of_Appointment = models.DateField(auto_now=False, auto_now_add=False, blank=True, null=True)
     Boat = models.ForeignKey(Boat, on_delete=models.CASCADE)
     Marina = models.ForeignKey(Marina, on_delete=models.CASCADE)
-    Slip = models.CharField(max_length=15, null=True)
-    Employee = models.ForeignKey(Employee, on_delete=models.CASCADE, null=True)
+    Slip = models.CharField(max_length=15, blank=True, null=True)
+    Employee = models.ForeignKey(Employee, on_delete=models.CASCADE, blank=True, null=True)
     Clean_Service = models.BooleanField(default=True)
     Zinc_Service = models.BooleanField(default=False)
-    Zinc_Service_Units = models.PositiveSmallIntegerField(null=True)
+    Zinc_Service_Units = models.PositiveSmallIntegerField(blank=True, null=True)
     Status = models.TextChoices("Status", "APPLIED CONFIRMED CANCELLED RESCHEDULED COMPLETE")
-    Note = models.TextField(max_length=500, default="No notes.", null=True)
+    Note = models.TextField(max_length=500, default="No notes.", blank=True, null=True)
 
 
