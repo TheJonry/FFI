@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django import forms
 
 class UserProfile(AbstractUser):
-    age = models.PositiveIntegerField(name="age", null="yes", blank="yes")
     role = models.CharField(name="role", null="yes", blank="yes", max_length=20)
     first_name = models.CharField(name="first_name", null="yes", blank="yes", max_length=50)
     last_name = models.CharField(name="last_name", null="yes", blank="yes", max_length=100)
