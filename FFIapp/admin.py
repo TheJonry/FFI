@@ -3,8 +3,8 @@ from FFIapp.models import UserProfile, newsPost, Services, Customers, Marinas, B
 
 # Register your models here.
 
-admin.site.register(UserProfile)
-admin.site.register(newsPost)
+#admin.site.register(UserProfile)
+#admin.site.register(newsPost)
 admin.site.register(Services)
 admin.site.register(Customers)
 admin.site.register(Marinas)
