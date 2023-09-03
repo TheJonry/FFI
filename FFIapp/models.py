@@ -30,6 +30,9 @@ class Service(models.Model):
 class Region(models.Model):
     Name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.Name
+
 class Marina(models.Model):
     id = models.BigAutoField(primary_key=True)
     Name = models.CharField(max_length=50)
@@ -38,6 +41,9 @@ class Marina(models.Model):
     Zip = models.PositiveSmallIntegerField()
     Region = models.ForeignKey(Region, on_delete=models.CASCADE, null=True)
     Note = models.TextField(max_length=500, default="No notes.")
+
+    def __str__(self):
+        return self.Name
 
 class Customer(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -49,6 +55,9 @@ class Customer(models.Model):
     Note = models.TextField(max_length=500, default="No notes.")
     Contact_Info = models.CharField(max_length=50, default="")
 
+    def __str__(self):
+        return self.Last_Name + ", " + self.First_Name
+
 class Boat(models.Model):
     id = models.BigAutoField(primary_key=True)
     Name = models.CharField(max_length=50, default="Boat")
@@ -57,12 +66,17 @@ class Boat(models.Model):
     Preferred_Interval = models.PositiveSmallIntegerField()
     Note = models.TextField(max_length=500, default="No notes.")
 
+    def __str__(self):
+        return self.Name
+
 class Employee(models.Model):
     id = models.BigAutoField(primary_key=True)
     First_Name = models.CharField(max_length=30)
     Last_Name = models.CharField(max_length=30)
     Can_Do = models.ManyToManyField(Service)
-    Note = models.TextField(max_length=500, default="No notes.") 
+    Note = models.TextField(max_length=500, default="No notes.")
+    def __str__(self):
+        return self.Last_Name + ", " + self.First_Name
 
 class Appointment(models.Model):
     id = models.BigAutoField(primary_key=True)
