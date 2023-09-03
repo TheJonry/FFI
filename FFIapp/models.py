@@ -18,51 +18,51 @@ class newsPost(models.Model):
     def __str__(self):
         return self.title + " | " + self.author
 
-class Services(models.Model):
+class Service(models.Model):
     id = models.BigAutoField(primary_key=True)
     Title = models.CharField(max_length=50)
     Description = models.TextField(max_length=3000)
-    Unit_Price = models.PositiveSmallIntegerField(max_length=8)
+    Unit_Price = models.PositiveSmallIntegerField()
     Unit_Price_Description = models.CharField(max_length=50)
 
     def __str__(self):
         return self.Title
 
-class Marinas(models.Model):
+class Marina(models.Model):
     id = models.BigAutoField(primary_key=True)
     Name = models.CharField(max_length=50)
     Street = models.CharField(max_length=50)
     City = models.CharField(max_length=25)
-    Zip = models.PositiveSmallIntegerField(max_length=5)
+    Zip = models.PositiveSmallIntegerField()
 
-class Customers(models.Model):
+class Customer(models.Model):
     id = models.BigAutoField(primary_key=True)
     First_Name = models.CharField(max_length=30)
     Last_Name = models.CharField(max_length=30)
 
-class Boats(models.Model):
+class Boat(models.Model):
     id = models.BigAutoField(primary_key=True)
-    Owner = models.ForeignKey(Customers, on_delete=models.CASCADE)
-    Size = models.PositiveSmallIntegerField(max_length=4)
-    Preferred_Interval = models.PositiveSmallIntegerField(max_length=3)
+    Owner = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    Size = models.PositiveSmallIntegerField()
+    Preferred_Interval = models.PositiveSmallIntegerField()
 
-class Employees(models.Model):
+class Employee(models.Model):
     id = models.BigAutoField(primary_key=True)
     First_Name = models.CharField(max_length=30)
     Last_Name = models.CharField(max_length=30)
-    Can_Do = models.ManyToManyField(Services)
+    Can_Do = models.ManyToManyField(Service)
 
 class Appointments(models.Model):
     id = models.BigAutoField(primary_key=True)
     Date_Submitted = models.DateField(auto_now_add=True)
     Date_Of_Appointment = models.DateField(auto_now=False, auto_now_add=False)
-    Boat = models.ForeignKey(Boats, on_delete=models.CASCADE)
-    Marina = models.ForeignKey(Marinas, on_delete=models.CASCADE)
+    Boat = models.ForeignKey(Boat, on_delete=models.CASCADE)
+    Marina = models.ForeignKey(Marina, on_delete=models.CASCADE)
     Slip = models.CharField(max_length=15)
-    Employee = models.ForeignKey(Employees, on_delete=models.CASCADE)
+    Employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     Clean_Service = models.BooleanField(default=True)
     Zinc_Service = models.BooleanField(default=False)
-    Zinc_Service_Units = models.PositiveSmallIntegerField(max_length=4)
+    Zinc_Service_Units = models.PositiveSmallIntegerField()
     Status = models.TextChoices("Status", "APPLIED CONFIRMED CANCELLED RESCHEDULED COMPLETE")
 
 
