@@ -50,9 +50,9 @@ class Employee(models.Model):
     id = models.BigAutoField(primary_key=True)
     First_Name = models.CharField(max_length=30)
     Last_Name = models.CharField(max_length=30)
-    Can_Do = models.ManyToManyField(Service)
+    Can_Do = models.ManyToManyField(Service) 
 
-class Appointments(models.Model):
+class Appointment(models.Model):
     id = models.BigAutoField(primary_key=True)
     Date_Submitted = models.DateField(auto_now_add=True)
     Date_Of_Appointment = models.DateField(auto_now=False, auto_now_add=False)

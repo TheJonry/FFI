@@ -1,5 +1,5 @@
 from django.contrib import admin
-from FFIapp.models import UserProfile, newsPost, Service, Customer, Marina, Boat, Employee, Appointments
+from FFIapp.models import UserProfile, newsPost, Service, Customer, Marina, Boat, Employee, Appointment
 
 # Register your models here.
 
@@ -10,7 +10,7 @@ admin.site.register(Customer)
 admin.site.register(Marina)
 admin.site.register(Boat)
 admin.site.register(Employee)
-admin.site.register(Appointments)
+admin.site.register(Appointment)
 
 
 class MyModelAdmin(admin.ModelAdmin):
